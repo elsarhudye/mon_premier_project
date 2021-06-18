@@ -24,6 +24,7 @@ class Post
     private $title;
 
     /**
+     * @gedmo\Slug(fields={"title"})
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
@@ -82,13 +83,13 @@ class Post
         return $this->slug;
     }
 
-    public function setSlug(string $slug): self
+    /*public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 
         return $this;
     }
-
+    */
     public function getContent(): ?string
     {
         return $this->content;
@@ -117,14 +118,14 @@ class Post
     {
         return $this->createdAt;
     }
-
+    /*
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
-
+    */
     public function getActive(): ?bool
     {
         return $this->active;
