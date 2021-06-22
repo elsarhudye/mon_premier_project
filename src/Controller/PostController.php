@@ -31,4 +31,11 @@ class PostController extends AbstractController
             'post' => $post
         ]);
     }
+
+    #[Route('/test_post', name: 'test_post')]
+    public function test(PostRepository $postRepository): Response
+    {
+        $posts = $postRepository->findAll();
+        dd($posts);
+    }
 }

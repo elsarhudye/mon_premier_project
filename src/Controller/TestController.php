@@ -18,7 +18,7 @@ class TestController extends AbstractController
         ]);
     }
 
-    #[Route('/test/{id}', name:'test_id', methods:('GET'), requirements:['id'=>'\d+'])]
+    #[Route('/test/{id}', name: 'test_id', methods: ('GET'), requirements: ['id' => '\d+'])]
     public function test_id($id): Response
     {
         return $this->render('test/index.html.twig', [
@@ -28,5 +28,4 @@ class TestController extends AbstractController
             'id' => $id,
         ]);
     }
-    
 }

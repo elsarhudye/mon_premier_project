@@ -56,7 +56,7 @@
 							<li class="nav-item">
 								<a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ path('app_logout') }}">Logout</a>
 							</li>
-						{% endif %}s
+						{% endif %}
 
 					</ul>
 				</div>
@@ -64,13 +64,19 @@
 		</nav>
 		<!-- Page Header-->
 		<header class="masthead" style="background-image: url('{% if bg_image is defined %}{{asset(bg_image)}}{% endif %}')
-																">
+																																">
 			<div class="container position-relative px-4 px-lg-5">
 				<div class="row gx-4 gx-lg-5 justify-content-center">
 					<div class="col-md-10 col-lg-8 col-xl-7">
 						<div class="site-heading">
-							<h1>Clean Blog</h1>
-							<span class="subheading">A Blog Theme by Start Bootstrap</span>
+							<h1>
+								{% block headerTitle %}{% endblock %}
+							</h1>
+							<span class="subheading">
+								{% block sub %}
+									Sub par défaut
+								{% endblock %}
+							</span>
 						</div>
 					</div>
 				</div>
