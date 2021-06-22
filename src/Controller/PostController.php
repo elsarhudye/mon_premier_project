@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use App\Repository\PostRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,11 +22,13 @@ class PostController extends AbstractController
     }
 
 
-    #[Route('/post/{id}', name: 'post_view', methods: ('GET'), requirements: ['id' => '\d+'])]
-    public function view(): Response
+    #[Route('/post/{slug}', name: 'post_view')]
+    public function view(Post $post): Response
     {
+        //dd($post);
         return $this->render('post/view.html.twig', [
-            'bg_image' => 'clean/assets/img/post-bg.jpg',
+            'bg_image' => $post->getImage(),
+            'post' => $post
         ]);
     }
 }
