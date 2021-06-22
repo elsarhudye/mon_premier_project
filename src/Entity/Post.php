@@ -40,6 +40,7 @@ class Post
     private $image;
 
     /**
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $createdAt;

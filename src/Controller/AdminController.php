@@ -43,15 +43,17 @@ class AdminController extends AbstractController
     #[Route('/post/add', name: 'post_add')]
     public function addPost(Request $request): Response
     {
-        $category = new Post();
-        $form = $this->createForm(PostType::class, $category);
+        $post = new Post();
+        $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $post->setUser($this->getUser());
+            $post->setActive(false);
             $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
+            $em->persist($post);
             $em->flush();
-            return $this->redirectToRoute('admin_home');
+            return $this->redirectToRoute('post_home');
         }
         return $this->render('admin/post/add.html.twig', [
             'form' => $form->createView(),
