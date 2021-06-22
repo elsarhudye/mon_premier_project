@@ -19,7 +19,7 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function findOldPosts(int $nb = 5): array
+    public function findOldPosts(int $nb = 2): array
     {
         $entityManager = $this->getEntityManager();
 

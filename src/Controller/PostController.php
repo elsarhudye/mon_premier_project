@@ -35,7 +35,7 @@ class PostController extends AbstractController
     #[Route('/test_post', name: 'test_post')]
     public function test(PostRepository $postRepository): Response
     {
-        $posts = $postRepository->findAll();
+        $posts = $postRepository->findOldPosts();
         dd($posts);
     }
 }
